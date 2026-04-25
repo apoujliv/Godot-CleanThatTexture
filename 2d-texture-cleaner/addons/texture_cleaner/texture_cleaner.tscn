@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://bqo4850ken4kq"]
+
+[ext_resource type="Script" uid="uid://dp1yyt37nohko" path="res://addons/texture_cleaner/texture_wipe.gd" id="1_dvc2c"]
+[ext_resource type="Texture2D" uid="uid://ue7ebtthfuhv" path="res://icon.svg" id="2_s10en"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_s10en"]
+lifetime_randomness = 0.25
+particle_flag_disable_z = true
+angle_min = -177.29999
+angle_max = 243.70001
+direction = Vector3(0, 0, 0)
+spread = 68.294
+initial_velocity_min = 252.68999
+initial_velocity_max = 408.6
+gravity = Vector3(0, 98, 0)
+
+[node name="Node" type="Node" unique_id=730930767]
+
+[node name="FinalImage" type="TextureRect" parent="." unique_id=1195083470]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureWipe" type="Control" parent="." unique_id=1970689343]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_dvc2c")
+front_image = ExtResource("2_s10en")
+enable_background_image = false
+
+[node name="FrontImage" type="TextureRect" parent="TextureWipe" unique_id=112933935]
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_s10en")
+
+[node name="Line2D" type="Line2D" parent="TextureWipe" unique_id=2083277651]
+clip_children = 2
+points = PackedVector2Array(0, 0)
+
+[node name="BackImage" type="TextureRect" parent="TextureWipe/Line2D" unique_id=2019476165]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Timer" type="Timer" parent="." unique_id=223183637]
+wait_time = 5.0
+one_shot = true
+
+[node name="Emitter" type="GPUParticles2D" parent="." unique_id=1177584900]
+emitting = false
+amount = 20
+texture = ExtResource("2_s10en")
+lifetime = 3.0
+randomness = 0.43
+trail_enabled = true
+process_material = SubResource("ParticleProcessMaterial_s10en")
+
+[connection signal="gui_input" from="TextureWipe/FrontImage" to="TextureWipe" method="_on_front_image_gui_input"]
+[connection signal="mouse_entered" from="TextureWipe/FrontImage" to="TextureWipe" method="_on_front_image_mouse_entered"]
+[connection signal="mouse_exited" from="TextureWipe/FrontImage" to="TextureWipe" method="_on_front_image_mouse_exited"]
+[connection signal="gui_input" from="TextureWipe/Line2D/BackImage" to="TextureWipe" method="_on_back_image_gui_input"]
+[connection signal="mouse_entered" from="TextureWipe/Line2D/BackImage" to="TextureWipe" method="_on_back_image_mouse_entered"]
+[connection signal="mouse_exited" from="TextureWipe/Line2D/BackImage" to="TextureWipe" method="_on_back_image_mouse_exited"]
+[connection signal="timeout" from="Timer" to="TextureWipe" method="_on_timer_timeout"]
