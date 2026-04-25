@@ -1,5 +1,9 @@
 <h1>Install Instructions:</h1>
-<a href="https://docs.godotengine.org/en/stable/tutorials/plugins/editor/installing_plugins.html#installing-a-plugin">[Godot Documentation]</a>. Install with zip folder.
+<ul>
+<li>Clone repo.</li>
+<li>Zip \godot_texture_cleaner\2d-texture-cleaner\addons</li>
+<li>Follow instructions to upload zip folder: <a href="https://docs.godotengine.org/en/stable/tutorials/plugins/editor/installing_plugins.html#installing-a-plugin">[Godot Documentation]</a>.</li>
+</ul>
 
 <h1>Usage:</h1>
 <h2>Requirements:</h2>
