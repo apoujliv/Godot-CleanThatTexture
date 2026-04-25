@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cyypnempb5gic"]
+
+[ext_resource type="Script" uid="uid://b8jcpov3jxsr" path="res://example/example_scene.gd" id="1_254le"]
+[ext_resource type="Texture2D" uid="uid://bb0bfwi0ep7qp" path="res://icon-diff.svg" id="2_254le"]
+[ext_resource type="Texture2D" uid="uid://ue7ebtthfuhv" path="res://icon.svg" id="3_jsujc"]
+[ext_resource type="PackedScene" uid="uid://bqo4850ken4kq" path="res://addons/texture_cleaner/texture_cleaner.tscn" id="4_254le"]
+
+[node name="ExampleScene" type="Control" unique_id=1603601713]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_254le")
+front_image = ExtResource("3_jsujc")
+back_image = ExtResource("2_254le")
+
+[node name="Node" parent="." unique_id=1504996192 instance=ExtResource("4_254le")]
+
+[node name="Line2D" parent="Node/TextureWipe" parent_id_path=PackedInt32Array(1504996192, 1970689343) index="1" unique_id=2083277651]
+points = PackedVector2Array(0, 0, 0, 0)
+width = 0.01
+
+[editable path="Node"]

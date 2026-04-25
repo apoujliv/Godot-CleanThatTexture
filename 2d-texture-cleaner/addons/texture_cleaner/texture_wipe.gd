@@ -1,4 +1,6 @@
 @tool
+@icon("res://addons/texture_cleaner/icon.png")
+class_name TextureCleaner
 extends Control
 
 @export var front_image : Texture2D
@@ -30,7 +32,7 @@ var mouse_in_range_back: bool = false
 var is_first_pass: bool = true
 var is_finished: bool = false
 
-func _enter_tree():
+func _ready() -> void:
 	brush_node = get_node_or_null("Line2D")
 	brush_node.width = .01
 	brush_node.add_point(brush_node.points[0])
@@ -42,6 +44,8 @@ func _enter_tree():
 
 	if (enable_background_image && back_image != null):	
 		back_image_node.texture = back_image
+		back_image_node.visible = true
+		final_image_node.visible = true
 	else:
 		back_image_node.visible = false
 		final_image_node.visible = false
@@ -61,11 +65,6 @@ func _enter_tree():
 			particle_emitter = get_parent().get_node_or_null("Emitter")
 	
 	queue_redraw()
-
-
-func _exit_tree():
-	# Clean-up of the plugin goes here.
-	pass
 	
 func _process(delta: float) -> void:
 	if !is_finished:
@@ -100,13 +99,14 @@ func fade_out() -> void:
 	timer.stop()
 	var tween = create_tween()
 	await tween.tween_property(self, "modulate", Color.TRANSPARENT, 2)
+	await tween.tween_property(brush_node, "modulate", Color.TRANSPARENT, 2)
 	if enable_emitter:
 		particle_emitter.emitting = false
 	is_finished = true;
 	
 func _handle_drag(event: InputEvent) -> void:
 	#handles input so we can brush
-	if event is InputEventMouseButton:
+	if event is InputEventMouseButton && !is_finished:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.is_pressed():
 				dragging = true
