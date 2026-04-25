@@ -1,5 +1,5 @@
 <h1>Install Instructions:</h1>
-[Godot Documentation](https://docs.godotengine.org/en/stable/tutorials/plugins/editor/installing_plugins.html#installing-a-plugin). Install with zip folder.
+<a href="https://docs.godotengine.org/en/stable/tutorials/plugins/editor/installing_plugins.html#installing-a-plugin">[Godot Documentation]</a>. Install with zip folder.
 
 <h1>Usage:</h1>
 <h2>Requirements:</h2>
