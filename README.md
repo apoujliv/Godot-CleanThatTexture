@@ -4,8 +4,9 @@
 <h1>Usage:</h1>
 <h2>Requirements:</h2>
 <ul>
-  <l1>Foreground Texture</l1>
-  <l1>Background Texture</l1>
+  <li>2D Scene</li>
+  <li>Foreground Texture</li>
+  <li>Background Texture</li>
   <li>Optional: particle emitter</li>
 </ul>
 
